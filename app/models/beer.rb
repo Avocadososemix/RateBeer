@@ -1,10 +1,8 @@
 class Beer < ApplicationRecord
   include RatingAverage
 
-  validates :score, numericality: { greater_than_or_equal_to: 1,
-                                    less_than_or_equal_to: 50,
-                                    only_integer: true }
   validates :name, uniqueness: true, presence: true
+  validates :style, presence: true
 
   belongs_to :brewery
   has_many :ratings, dependent: :destroy
