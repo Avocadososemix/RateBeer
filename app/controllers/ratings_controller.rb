@@ -25,5 +25,4 @@ class RatingsController < ApplicationController
     rating.delete if current_user == rating.user
     redirect_to user_path(current_user)
   end
-
 end

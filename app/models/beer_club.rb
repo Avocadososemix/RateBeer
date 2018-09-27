@@ -1,10 +1,8 @@
 class BeerClub < ApplicationRecord
-    has_many :memberships, dependent: :destroy
-    has_many :users, through: :memberships
+  has_many :memberships, dependent: :destroy
+  has_many :users, through: :memberships
 
-    def to_s
-        name + " #{city}"
-    end
-
-
+  def to_s
+    name + " #{city}"
+  end
 end
