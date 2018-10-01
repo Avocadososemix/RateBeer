@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+- 2.5.1
+script:
+- bundle exec rails db:migrate
+- bundle exec rspec -fd spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: KN8Hd4/MpuKfp5/DGr0ZMiagemvkke2odsuN2XwxAaWF4Z9WsMCtpaOTCMMqsxSUIS/B18aYGsaMaKJplH7AM4YsfdGZlzGg7PEH7W+9b4qyqzt9erpu58ECuy2AN9jX9T8FyInKIIEeocF9w/08c7bqApfyV+VIrBZEnR9t3D9iB+OnuIQJVuSfed+CO4Jnfbtcu4qB06p6kx23qET5bI0jksA6jZMEp2u7uBZhfNmlTG3eoqA0KyGu/xphZKuEmOvXwk9cgmrANHPVVqbFRQ9Wk9J63YG5dN5j7B2iw2r9xhDqETG9zHgZpKHbIDZ7B2hX5Ut1qDjjt4LGCReSTFVIAmLgE3p4Yv4z9AdBo3bahAjlINO8kr36jtLz0EIDdCLzW250Pk0d+cfuGqcYGfFktmxYDb47DLPQzUbs5FsjWwuKavDs+PXl9hvK6miEKIeIFrdkwRhYSb2vxUcnY0QtBHsUQLJFXnwWMHg30owpnFxZHc6TvlFpG35Z+M3hZI0Ng5F6kHZenolCfS7lsnp7XeEugn9/FnwbhG5kzv7lmPIpzlrnKzXxD0sYSDvxBL9BfdGdQVcPXMAMf/6TclFJg6FU19pfiE87fPFMoP3Pr7aqbbaXGx/66+q3wL7wHGtPnusH0LM1+g7xO6CBnXqAA3VRa0oNLuWbQPpX2uI=
+  app: shrouded-stream-47285
+  on:
+    repo: Avocadososemix/RateBeer

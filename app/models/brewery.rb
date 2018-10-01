@@ -1,7 +1,7 @@
 class Brewery < ApplicationRecord
   include RatingAverage
 
-  validates :name, uniqueness: true, presence: true
+  validates :name, presence: true
   validates :year, numericality: { only_integer: true, greater_than_or_equal_to: 1040 }
   validate :creation_date_can_not_be_in_the_future
 
@@ -21,6 +21,7 @@ class Brewery < ApplicationRecord
 
   def creation_date_can_not_be_in_the_future
     return nil unless year? && year > Date.today.year
+
     errors.add(:year, "can't be in the future")
   end
 end

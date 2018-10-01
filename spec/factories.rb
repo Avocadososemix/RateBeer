@@ -5,6 +5,12 @@ FactoryBot.define do
     password_confirmation { "Foobar1" }
   end
 
+  factory :user2, class: User do
+    username { "Toni" }
+    password { "Foobar1" }
+    password_confirmation { "Foobar1" }
+  end
+
   factory :brewery do
     name { "anonymous" }
     year { 1900 } 
@@ -18,5 +24,7 @@ FactoryBot.define do
 
   factory :rating do
     beer # reittaukseen liittyvä olut luodaan beer-tehtaalla
+    user
+    score { 4 }
   end
 end

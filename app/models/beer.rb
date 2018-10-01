@@ -1,7 +1,7 @@
 class Beer < ApplicationRecord
   include RatingAverage
 
-  validates :name, uniqueness: true, presence: true
+  validates :name, presence: true
   validates :style, presence: true
 
   belongs_to :brewery
