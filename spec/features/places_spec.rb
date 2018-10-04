@@ -27,20 +27,17 @@ describe "Places" do
 
   it "if many are returned by the API, they are all showed on the page" do
     allow(BeermappingApi).to receive(:places_in).with("espoo").and_return(
-      BeermappingApi.places_in("espoo")
+    [ Place.new( name:"nakkibaari", id: 1 ), 
+    Place.new( name:"makkarabaari", id: 2 ),
+    Place.new( name:"kettubaari", id: 3 ) ]
       )
-
-
-    #  [ Place.new( name:"nakkibaari", id: 1 ),  ]
-    #  [ Place.new( name:"makkarabaari", id: 2 ) ]
-    #  [ Place.new( name:"kettubaari", id: 3 ) ]
 
       visit places_path
       fill_in('city', with: 'espoo')
       click_button "Search"
 
-      expect(page).to have_content "Gallows Bird"
-    #  expect(page).to have_content "makkarabaari"
-    # expect(page).to have_content "kettubaari"
+      expect(page).to have_content "nakkibaari"
+      expect(page).to have_content "makkarabaari"
+      expect(page).to have_content "kettubaari"
   end
 end
