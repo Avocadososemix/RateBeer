@@ -11,3 +11,5 @@ deploy:
   app: shrouded-stream-47285
   on:
     repo: Avocadososemix/RateBeer
+env:
+- BEERMAPPING_APIKEY="daf5a413523f1491e41fb38f3ea35d72"

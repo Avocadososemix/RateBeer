@@ -1,5 +1,10 @@
 # README
 
+This is a beer-rating web app in the making. The app allows users to sign up and rate beers.
+
+Heroku:
+[Heroku](https://shrouded-stream-47285.herokuapp.com/)
+
 Travis:
 [![Build Status](https://travis-ci.org/Avocadososemix/RateBeer.svg?branch=master)](https://travis-ci.org/Avocadososemix/RateBeer)
 
@@ -13,13 +18,15 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version:
+ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux]
 
 * System dependencies
 
 * Configuration
 
 * Database creation
+PostGresql
 
 * Database initialization
 

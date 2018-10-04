@@ -14,7 +14,7 @@ describe "Beers page" do
     visit beers_path
     expect(page).to have_content 'Beers'
     click_link "New Beer"
-
+    
     fill_in('beer[name]', with:'Hupikalja')
     select('Koff', from:'beer[brewery_id]')
     select('Weizen', from:'beer[style]')
