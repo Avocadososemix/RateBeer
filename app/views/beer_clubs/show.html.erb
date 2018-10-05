@@ -1,13 +1,27 @@
-<p id="notice"><%= notice %></p>
+<p style="color:MediumSeaGreen;" id="notice"><%= notice %></p>
 
-  <h1><%= @beer_club.to_s %></h1>
-  
+<h1><%= @beer_club.to_s %></h1>
+
 <p>
-  Founded 
+  Founded
   <%= @beer_club.founded %>
 </p>
 
-<strong><h3>Members:</h3></strong>
+ <% if current_user and not @beer_club.users.include?(current_user) %>
+  <%= form_for(@membership) do |f| %>
+    <%= f.hidden_field :beer_club_id %>
+    <%= f.submit value:"join the club" %>
+  <% end %>
+<% end %>
+
+<% if current_user and @beer_club.users.include?(current_user) %>
+  <%= form_for(@membership, method: "delete") do |f| %>
+    <%= f.hidden_field :beer_club_id %>
+    <%= f.submit value: "end the membership" %>
+  <% end %>
+<% end %>
+
+<strong><h3>Members</h3></strong>
 <p>
  <% @beer_club.users.each do |user| %>
    <%= link_to user.username, user %>

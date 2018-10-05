@@ -5258,7 +5258,7 @@
         <li class="covered" data-hits="11" data-linenumber="4">
           <span class="hits">11</span>
           
-          <code class="ruby">    Rails.cache.fetch(city) { get_places_in(city) }</code>
+          <code class="ruby">    Rails.cache.fetch(city, expires_in: 1.minutes)) { get_places_in(city) }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
