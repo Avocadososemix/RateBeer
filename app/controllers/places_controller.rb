@@ -12,8 +12,7 @@ class PlacesController < ApplicationController
     end
 
     def show
-      @place = BeermappingApi.places_in(session[:lastcity]).find{ |place| place.id == params[:id]}
+      @place = BeermappingApi.places_in(session[:lastcity]).find{ |place| place.id == params[:id] }
     end
-
   end
 end
