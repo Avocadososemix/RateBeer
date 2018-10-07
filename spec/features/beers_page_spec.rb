@@ -3,6 +3,7 @@ require 'rails_helper'
 include Helpers
 
 describe "Beers page" do
+  let!(:style) { FactoryBot.create :style, name:"Lager" }
   let!(:brewery) { FactoryBot.create :brewery, name:"Koff" }
 
   before :each do
@@ -17,7 +18,7 @@ describe "Beers page" do
     
     fill_in('beer[name]', with:'Hupikalja')
     select('Koff', from:'beer[brewery_id]')
-    select('Weizen', from:'beer[style]')
+    select('Lager', from:'beer[style_id]')
 
     expect{
       click_button "Create Beer"
