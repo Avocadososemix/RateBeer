@@ -5,7 +5,7 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<% if @weather %>
+<br><% if @weather %>
   <p><%= @weather['temp_c'] %> Celsius</p>
 
   <img src=<%= @weather['condition']['icon'] %> >
@@ -21,10 +21,10 @@
       <th>name</th>
       <th>status</th>
       <th>street</th>
-      <th>city</th> 
-      <th>zip</th> 
-      <th>country</th> 
-      <th>overall</th>               
+      <th>city</th>
+      <th>zip</th>
+      <th>country</th>
+      <th>overall</th>
     </thead>
     <% @places.each do |place| %>
       <tr>

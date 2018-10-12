@@ -1,12 +1,11 @@
 <p>
   <strong>Beer club:</strong>
-  <%= @membership.beer_club_id %>
+  <%= @membership.beer_club %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @membership.user_id %>
+  <%= @membership.user.username %>
 </p>
 
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
-<%= link_to 'Back', memberships_path %>
+<%= edit_and_destroy_buttons(@membership) %>

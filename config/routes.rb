@@ -12,6 +12,13 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :ratings, only: [:index, :new, :create, :destroy]
 
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
+  resources :users do
+    post 'toggle_closed', on: :member
+  end
+
 root 'breweries#index'
 get 'kaikki_bisset', to: 'beers#index'
 get 'signup', to: 'users#new'

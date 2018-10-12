@@ -1,0 +1,17 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th></th>
+    <th>average</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= number_with_precision(item.average_rating, precision: 1, strip_insignificant_zeros: true) %><td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

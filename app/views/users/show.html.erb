@@ -3,7 +3,14 @@
   <%= @user.username %>
   </strong></h2>
 
+  <% if current_user.admin %>
+  <%= link_to "close account", toggle_closed_user_path(@user.id), method: :post, class: "btn btn-danger" %>
+  <% end%>
 </p>
+<% if @user.admin %>
+You my dude are an admin<br><br>
+<% end %>
+
 <% if @user.ratings.empty? %>
   <p>has not rated any beer</p>
 <% else %>
@@ -22,17 +29,17 @@
       <li> <%= link_to club.name, club %> </li>
     <% end %>
   <% end %>
-</pp>
+</p>
 
 
 <h3><strong>ratings</strong></h3>
 <ul>
  <% @user.ratings.each do |rating| %>
-   <li> <%= rating %> 
+   <li> <%= rating %>
       <% if @user == current_user %>
           <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>   
-    </li>  
+      <% end %>
+    </li>
  <% end %>
 </ul>
 

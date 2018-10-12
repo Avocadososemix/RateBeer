@@ -27,5 +27,5 @@ module Helpers
     scores.each do |score|
       create_beer_with_rating(object, score)
     end
-  end  
+  end
 end
