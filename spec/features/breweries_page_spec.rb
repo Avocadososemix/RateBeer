@@ -30,7 +30,6 @@ describe "Breweries page" do
     end
 
     it "allows user to navigate to page of a Brewery" do
-      save_and_open_page
       click_link "Koff"
 
       expect(page).to have_content "Koff"

@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :current_user_admin, only: [:toggle_closed]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.includes(:ratings, :beers).all
   end
 
   # GET /users/1
@@ -41,11 +42,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if user_params[:username].nil? && (@user == current_user) && @user.update(user_params)
+      if user_params[:username].nil? && @user == current_user && @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render action: 'edit' }
+        format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -54,10 +55,10 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    return nil unless @user == current_user
-
-    @user.destroy
-    session.clear
+    if @user == current_user
+      @user.destroy
+      session[:user_id] = nil
+    end
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
@@ -68,9 +69,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.update_attribute :closed, !user.closed
 
-    new_status = user.closed? ? "closed" : "active"
+    new_status = user.closed? ? "closed" : "opened"
 
-    redirect_to user, notice: "user account status changed to #{new_status}"
+    redirect_to user, notice: "account of #{user.username} #{new_status}"
   end
 
   private

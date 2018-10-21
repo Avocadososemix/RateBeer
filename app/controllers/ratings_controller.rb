@@ -1,11 +1,11 @@
 class RatingsController < ApplicationController
   def index
+    @ratingsrecent = Rating.recent
     @ratings = Rating.all
-    @beers = Beer.all
-    @recentfiveratings = Rating.recent
-    @styles = Style.all
-    @breweries = Brewery.all
-    @users = User.all.top(3)
+    @beers = Beer.top(Beer.all, 3)
+    @styles = Style.top(Style.all, 3)
+    @breweries = Brewery.top(Brewery.all, 3)
+    @users = User.top 3
   end
 
   def new
@@ -20,7 +20,6 @@ class RatingsController < ApplicationController
     if current_user.nil?
       redirect_to signin_path, notice: 'you should be signed in'
     elsif @rating.save
-      current_user.ratings << @rating ## virheen aiheuttanut rivi
       redirect_to user_path current_user
     else
       @beers = Beer.all
@@ -29,8 +28,9 @@ class RatingsController < ApplicationController
   end
 
   def destroy
-    rating = Rating.find params[:id]
+    rating = Rating.find(params[:id])
     rating.delete if current_user == rating.user
+
     redirect_to user_path(current_user)
   end
 end

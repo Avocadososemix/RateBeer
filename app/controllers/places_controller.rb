@@ -7,12 +7,13 @@ class PlacesController < ApplicationController
   end
 
   def search
-    @places = BeermappingApi.places_in(params[:city])
+    city = params[:city]
+    @places = BeermappingApi.places_in(city)
     if @places.empty?
-      redirect_to places_path, notice: "No locations in #{params[:city]}"
+      redirect_to places_path, notice: "No locations in #{city}"
     else
-      @weather = ApixuApi.weather_in(params[:city])
-      session[:city] = params[:city]
+      @weather = ApixuApi.weather_in(city)
+      session[:city] = city
       render :index
     end
   end

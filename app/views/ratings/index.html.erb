@@ -5,15 +5,15 @@
   <div class="row">
     <div class="col-8 col-sm-4">
       <h3>Best beers</h3>
-      <%= render 'list', items: @beers.top(3) %>
+      <%= render 'list', items: @beers %>
     </div>
     <div class="col-6 col-sm-4">
       <h3>Best breweries</h3>
-      <%= render 'list', items: @breweries.top(3) %>
+      <%= render 'list', items: @breweries %>
     </div>
     <div class="col-4 col-sm-4">
       <h3>Best styles</h3>
-      <%= render 'list', items: @styles.top(3) %>
+      <%= render 'list', items: @styles %>
     </div>
   </div>
   <h3>Most active users</h3>
@@ -37,14 +37,14 @@
 
     <h3>recent ratings</h3>
     <ul>
-      <% @recentfiveratings.each do |rating| %>
+      <% @ratingsrecent.each do |rating| %>
         <li> <%= rating %> by
         <%= link_to rating.user.username, user_path(rating.user_id) %> at
       <%= rating.updated_at %></li>
     <% end %>
     </ul>
 
-    <p> Ratings given: <%= @ratings.count %> </p>
+    <p> <%= @ratings.count %> ratings given by <%= current_user.username %> so far.</p>
 
     <%= link_to('New Rating', new_rating_path, class:'btn btn-success') if current_user %>
   </div>

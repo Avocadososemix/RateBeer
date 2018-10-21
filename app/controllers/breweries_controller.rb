@@ -1,12 +1,14 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_signed_in, except: [:index, :show, :list]
+  before_action :current_user_admin, only: [:destroy]
 
   # GET /breweries
   # GET /breweries.json
   def index
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
+    @breweries = Brewery.all
   end
 
   # GET /breweries/1
@@ -21,6 +23,9 @@ class BreweriesController < ApplicationController
 
   # GET /breweries/1/edit
   def edit
+  end
+
+  def list
   end
 
   # POST /breweries
@@ -74,12 +79,10 @@ class BreweriesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_brewery
     @brewery = Brewery.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def brewery_params
     params.require(:brewery).permit(:name, :year, :active)
   end
