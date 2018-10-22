@@ -44,8 +44,9 @@
     <% end %>
     </ul>
 
+    <% if current_user %>
     <p> <%= @ratings.count %> ratings given by <%= current_user.username %> so far.</p>
-
+    <% end %>
     <%= link_to('New Rating', new_rating_path, class:'btn btn-success') if current_user %>
   </div>
 </div>

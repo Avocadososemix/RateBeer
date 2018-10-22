@@ -35,7 +35,7 @@ describe "Rating" do
 
   it "tells the current amount of ratings displayed" do
     visit ratings_path
-    expect(page).to have_content 'Ratings given: 5'
+    expect(page).to have_content '5 ratings given by'
   end
 
   it "only given by the user can be seen on the user's profile" do

@@ -2,9 +2,10 @@
   <strong><h2>
   <%= @user.username %>
   </strong></h2>
-
+  <% if current_user %>
   <% if current_user.admin %>
   <%= link_to "close account", toggle_closed_user_path(@user.id), method: :post, class: "btn btn-danger" %>
+  <% end%>
   <% end%>
 </p>
 <% if @user.admin %>

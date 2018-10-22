@@ -47,7 +47,6 @@ describe "Beerlist page" do
   it "shows beers in alphabetical order according to style", :js => true do
     visit beerlist_path
     click_link "style"
-    save_and_open_page
     expect(
         find('table').find('tr:nth-child(2)')
     ).to have_content "Nikolai"
@@ -62,7 +61,6 @@ describe "Beerlist page" do
   it "shows beers in alphabetical order according to brewery", :js => true do
     visit beerlist_path
     click_link "brewery"
-    save_and_open_page
     expect(
         find('table').find('tr:nth-child(2)')
     ).to have_content "Lechte Weisse"

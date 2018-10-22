@@ -28,6 +28,7 @@ describe "User" do
     fill_in('user_username', with: 'Brian')
     fill_in('user_password', with: 'Secret55')
     fill_in('user_password_confirmation', with: 'Secret55')
+    save_and_open_page
 
     expect{
       click_button('Create User')
