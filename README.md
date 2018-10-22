@@ -17,7 +17,7 @@ CodeClimate:
 
 This project can be ran locally, as long as Rails has been installed, and API-keys for the *BeerMappingAPI* and *WeatherMapAPI* are changed for your instance of the program (added to the env/bashrc).  
 
-Connecting to ´http://localhost:3000/´ will show the index-page when ran locally.  
+Connecting to `http://localhost:3000/` will show the index-page when ran locally.  
 
 If used online, these same APIkeys must be configured to be available to the host of your RateBeer-application.  
 
@@ -32,9 +32,9 @@ Admins must be added to the system through the database, or another admin can pr
 
 * This project has been built and tested on ubuntu 16.04.
 
-* Databases use PostGresql, and can be seeded from the seed in the DB folder.
+* Databases use *PostGreSQL*, and can be seeded from the seed in the DB folder.
 
-* The project can be tested locally using the command 'rspec spec' in a terminal that is open in the project root.
+* The project can be tested locally using the command `rspec spec` in a terminal that is open in the project root.
 
 * Services (job queues, cache servers, search engines, etc.)
 
